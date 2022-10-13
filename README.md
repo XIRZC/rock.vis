@@ -4,8 +4,8 @@ This is an implementation of visualization of `RObust Clustering using linKs` by
 
 ## Environment
 
-- python >= 3.7
-- pip install -r requirements
+- python>=3.7
+- pip install -r requirements.txt
 
 ## Visualizing
 
