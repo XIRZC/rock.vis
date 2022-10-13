@@ -1,0 +1,4 @@
+pyclustering  # This automatically requires and installs scipy, matplotlib, numpy and Pillow
+pandas
+jupyter
+jupyterlab # Note: jupyter is enough for runing the example jupyter codes, but jupyterlab provides better features, so this package is optional. Just comment this line for not installing it
