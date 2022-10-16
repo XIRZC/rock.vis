@@ -20,6 +20,12 @@ def jaccard_similarity(point1, point2):
     union = (len(point1) + len(point2)) - intersection
     return float(intersection) / union
 
+def print_tidy_nested_list(nested_list):
+    for inner_list in nested_list:
+        for element in inner_list:
+            print(f"{element} ", end='')
+        print()
+
 class rock:
     """!
     @brief The class represents clustering algorithm ROCK.
@@ -45,7 +51,7 @@ class rock:
        
     """
     
-    def __init__(self, data, number_clusters, metric_function='jaccard_similarity', theta=0.5, ccore=False):
+    def __init__(self, data, number_clusters, metric_function='jaccard_similarity', theta=0.5, matrix_verbose=False, ccore=False):
         """!
         @brief Constructor of clustering algorithm ROCK.
         
@@ -60,6 +66,7 @@ class rock:
         self.__number_clusters = number_clusters
         self.__metric_function = metric_function
         self.__theta = theta    
+        self.__matrix_verbose = matrix_verbose
         
         self.__clusters = None
         
@@ -73,6 +80,11 @@ class rock:
         self.__create_neighbours_matrix()
         self.__links_matrix = None
         self.__create_links_matrix()
+        if self.__matrix_verbose == True:
+            print('==> Neighbours Matrix...')
+            print_tidy_nested_list(self.__neighbours_matrix)
+            print('==> Links Matrix...')
+            print_tidy_nested_list(self.__links_matrix)
        # print(self.__neighbours_matrix)
        # print(self.__links_matrix)
        # print(self.__links_matrix == self.__neighbours_matrix)
