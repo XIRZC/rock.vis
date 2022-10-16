@@ -10,3 +10,9 @@ This is an implementation of visualization of `RObust Clustering using linKs` by
 ## Visualizing
 
 Just in the repository root dir, run `jupyter lab`, and then in the browser run corresponding cells.
+
+We just study theta's impact for robustness of ROCK clustering algorithm.
+
+![](./res/recall.png)
+![](./res/precision.png)
+![](./res/f1.png)
