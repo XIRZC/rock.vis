@@ -80,6 +80,8 @@ class rock:
         self.__create_neighbours_matrix()
         self.__links_matrix = None
         self.__create_links_matrix()
+
+        self.__goodness_per_cluster = []
         if self.__matrix_verbose == True:
             print('==> Neighbours Matrix...')
             print_tidy_nested_list(self.__neighbours_matrix)
@@ -116,6 +118,15 @@ class rock:
                     self.__clusters.pop(indexes[1])   # remove merged cluster.
                 else:
                     break  # totally separated clusters have been allocated
+        for i in range(0, len(self.__clusters)):
+            cluster = self.__clusters[i]
+            cluster_goodness_for_this_cluster = 0
+            for j in range(0, len(cluster)):
+                for k in range(0, j-1):
+                    # ni*sum(link(p,q)/ni^(1+2f(theta)))
+                    cluster_goodness_for_this_cluster += self.__links_matrix[j][k]
+            cluster_goodness_for_this_cluster = len(cluster) * cluster_goodness_for_this_cluster / (len(cluster) ** self.__degree_normalization)
+            self.__goodness_per_cluster.append(cluster_goodness_for_this_cluster)
         return self
 
     
@@ -130,6 +141,10 @@ class rock:
         """
         
         return self.__clusters
+    
+
+    def get_goodness_per_cluster(self):
+        return self.__goodness_per_cluster
 
 
     def get_cluster_encoding(self):

@@ -16,3 +16,4 @@ We just study theta's impact for robustness of ROCK clustering algorithm.
 ![](./res/recall.png)
 ![](./res/precision.png)
 ![](./res/f1.png)
+![](./res/goodness.png)
